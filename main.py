@@ -16,7 +16,7 @@ app = FastAPI()
 
 templates = Jinja2Templates(directory="templates")
 
-model = joblib.load("model/placement_model.pkl")
+model = joblib.load("Model/placement_model.pkl")
 
 
 class StudentData(BaseModel):
