@@ -1,0 +1,5 @@
+__pycache__/
+*.py[cod]
+
+# Local notebook copy kept out of the repo
+Student_Placement_Prediction_Project (1).ipynb
