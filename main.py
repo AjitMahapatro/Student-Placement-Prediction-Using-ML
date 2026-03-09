@@ -1,6 +1,7 @@
 import os
 import threading
 import webbrowser
+from pathlib import Path
 
 if __name__ == "__main__":
     import uvicorn
@@ -27,7 +28,23 @@ app.add_middleware(
 
 templates = Jinja2Templates(directory="templates")
 
-model = joblib.load("model/placement_model.pkl")
+BASE_DIR = Path(__file__).resolve().parent
+MODEL_CANDIDATES = [
+    BASE_DIR / "model" / "placement_model.pkl",
+    BASE_DIR / "Model" / "placement_model.pkl",
+]
+
+model = None
+for candidate in MODEL_CANDIDATES:
+    if candidate.exists():
+        model = joblib.load(candidate)
+        break
+
+if model is None:
+    raise FileNotFoundError(
+        "Model file not found. Checked: "
+        + ", ".join(str(path) for path in MODEL_CANDIDATES)
+    )
 
 
 class StudentData(BaseModel):
