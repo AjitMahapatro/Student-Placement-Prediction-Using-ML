@@ -171,4 +171,4 @@ This keeps:
 
 ## License
 
-MIT (or your preferred license if you choose to update it).
+MIT 
