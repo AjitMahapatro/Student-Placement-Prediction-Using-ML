@@ -171,4 +171,4 @@ This keeps:
 
 ## License
 
-MIT 
+MIT.
