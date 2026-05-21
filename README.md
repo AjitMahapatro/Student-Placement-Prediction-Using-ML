@@ -1,170 +1,246 @@
-# Student Placement Prediction Web App
+# 🎓 Student Placement Prediction System
 
-An end-to-end machine learning web application that predicts whether a student is likely to be placed based on academic performance, internships, aptitude, communication skills, projects, branch, and backlogs.
+A machine learning-based web application designed to predict student placement outcomes based on academic performance, internships, aptitude, communication skills, projects, and related factors.
 
-This project combines a trained ML pipeline, a FastAPI backend, and a responsive web interface to provide placement predictions with a confidence score.
+The project combines machine learning workflows with a FastAPI-powered backend and a responsive web interface to provide placement predictions and confidence-based insights.
 
-## Team
+Developed as a collaborative team project during the Machine Learning with Python Internship at Adhoc Network Tech Company.
 
-- Team Leader: Ajit Mahapatro
-- Team Members: G. Jyothi Charan, M. Naveen, K. Kushwanth, A. Shanmukh, P. Leela, K. Harsha
+---
 
-## Project Overview
+# 👥 Team
 
-Placement outcomes are influenced by multiple academic and skill-based factors. This project was built to analyze those factors and generate a quick prediction that can support learning, self-assessment, and project demonstration.
+## Team Leader
+- Ajit Mahapatro
 
-The application accepts student details through a web form, processes the input using a trained machine learning model, and returns:
+## Team Members
+- G. Jyothi Charan
+- M. Naveen
+- K. Kushwanth
+- A. Shanmukh
+- P. Leela
+- K. Harsha
 
-- Placement prediction
-- Confidence percentage
-- Clean, session-based result display
+---
 
-## Features
+# 📌 Project Overview
 
-- Predicts student placement likelihood from structured input data
-- Displays prediction confidence in percentage form
-- Uses a responsive web interface for desktop and mobile
-- Supports POST-Redirect-GET flow to avoid duplicate form submission
-- Retains recent form data and result using session storage
-- Includes a reset route to clear the current prediction
-- Supports local model retraining through a separate Python script
+This project was developed to explore how machine learning can be applied to academic and skill-based datasets to analyze placement trends and prediction patterns.
 
-## Tech Stack
+The application accepts structured student input data and generates:
+- placement prediction
+- confidence-based prediction score
+- interactive result display
 
-- Backend: FastAPI, Uvicorn
-- Machine Learning: scikit-learn, XGBoost
-- Data Handling: pandas, joblib
-- Frontend: HTML, CSS, Jinja2
-- Session Handling: Starlette SessionMiddleware
-- Form Support: python-multipart
+The project also provided practical exposure to deploying machine learning workflows using FastAPI.
 
-## Project Structure
+---
+
+# 🚀 Key Features
+
+## Placement Prediction
+- Predicts student placement likelihood
+- Confidence-based prediction output
+- Structured input-based analysis
+
+---
+
+## Machine Learning Workflow
+- Data preprocessing and feature engineering
+- Classification-based prediction pipeline
+- Model training and evaluation using XGBoost
+
+---
+
+## Interactive Web Interface
+- Responsive user interface
+- Session-based result handling
+- Simple and user-friendly workflow
+
+---
+
+## Model Retraining Support
+- Separate training pipeline for retraining models
+- Pipeline persistence using Joblib
+
+---
+
+# 🤖 Machine Learning Pipeline
+
+The project uses:
+- Scikit-Learn
+- XGBoost
+- Pandas
+
+The workflow includes:
+- preprocessing numerical and categorical features
+- encoding and scaling
+- classification model training
+- prediction probability generation
+
+---
+
+# 🛠️ Tech Stack
+
+## Backend
+- FastAPI
+- Uvicorn
+
+## Machine Learning
+- Scikit-Learn
+- XGBoost
+- Pandas
+- Joblib
+
+## Frontend
+- HTML
+- CSS
+- Jinja2
+
+---
+
+# 📂 Project Structure
 
 ```text
 placement_web_app/
-|-- main.py
-|-- retrain.py
-|-- requirements.txt
-|-- runtime.txt
-|-- student_placement_dataset_updated.csv
-|-- model/
-|   `-- placement_model.pkl
-`-- templates/
-    `-- index.html
+│
+├── main.py
+├── retrain.py
+├── requirements.txt
+├── model/
+│   └── placement_model.pkl
+│
+├── templates/
+│   └── index.html
+│
+└── dataset/
 ```
 
-## Input Features
+---
 
-The model uses the following inputs:
+# 📊 Input Features
 
-- `gender`
-- `cgpa`
-- `internships`
-- `aptitude_score`
-- `communication_score`
-- `projects`
-- `branch`
-- `backlogs`
+The model uses:
+- CGPA
+- internships
+- aptitude score
+- communication score
+- projects
+- branch
+- backlogs
 
-Target variable:
+Target Variable:
+- placement status
 
-- `status`
+---
 
-## How It Works
+# ⚙️ Workflow
 
-1. The user enters student details in the web form.
-2. FastAPI receives the form data and converts it into a DataFrame.
-3. The trained model predicts placement status.
-4. The model also returns a probability score.
-5. The result and confidence score are shown on the UI.
+```text
+Student Input
+      ↓
+Data Preprocessing
+      ↓
+Feature Engineering
+      ↓
+Machine Learning Prediction
+      ↓
+Confidence Score Generation
+      ↓
+Result Visualization
+```
 
-## Model Training
+---
 
-The training workflow is implemented in `retrain.py`.
+# 💻 Local Setup
 
-Training pipeline:
-
-1. Load dataset from `student_placement_dataset_updated.csv`
-2. Split input features and target column
-3. Preprocess numerical features using `StandardScaler`
-4. Encode categorical features using `OneHotEncoder`
-5. Train an `XGBClassifier`
-6. Save the trained pipeline as `model/placement_model.pkl`
-
-## Installation and Setup
-
-### 1. Clone the repository
+## Clone Repository
 
 ```bash
-git clone https://github.com/AjitMahapatro/Student-Placement-Prediction-Using-ML.git
+git clone <repo-url>
 cd Student-Placement-Prediction-Using-ML
 ```
 
-### 2. Create a virtual environment
+---
 
-Windows PowerShell:
-
-```powershell
-python -m venv venv
-.\venv\Scripts\Activate.ps1
-```
-
-macOS/Linux:
+## Create Virtual Environment
 
 ```bash
 python -m venv venv
-source venv/bin/activate
 ```
 
-### 3. Install dependencies
+---
+
+## Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Retrain the model if needed
+---
+
+## Retrain Model (Optional)
 
 ```bash
 python retrain.py
 ```
 
-### 5. Run the application
+---
+
+## Run Application
 
 ```bash
 python main.py
 ```
 
-Default local URL:
+Application runs on:
 
 ```text
 http://127.0.0.1:10000
 ```
 
-## Environment Variables
+---
 
-- `PORT`: Port used by the FastAPI app. Default is `10000`.
-- `AUTO_OPEN_BROWSER`: Set to `0` to disable automatic browser opening on startup.
-- `SESSION_SECRET_KEY`: Secret key used for session signing. Recommended for production use.
+# 🌐 Application Features
 
-## Application Routes
+- Placement prediction form
+- Confidence score visualization
+- Session-based result management
+- Reset prediction workflow
 
-- `GET /` - Displays the prediction form and latest result
-- `POST /predict_form` - Accepts form data and generates prediction
-- `GET /reset` - Clears saved session data and resets the form
+---
 
-## Example Use Cases
+# 📈 Future Improvements
 
-- Student self-assessment projects
-- Academic mini project demonstrations
-- ML deployment practice
-- FastAPI and Jinja2 integration learning
+- Interactive analytics dashboard
+- Placement trend visualization
+- Real-world dataset integration
+- Advanced predictive modeling
+- Improved UI/UX design
 
-## Notes
+---
 
-- This project is intended for educational and demonstration purposes.
-- Prediction output should not be treated as a real-world placement guarantee.
-- Results depend on the quality and scope of the training dataset.
+# ⚠️ Notes
 
-## License
+- This project was developed for educational and analytical purposes.
+- Prediction results are dependent on dataset quality and model training conditions.
+- The system is intended for learning and demonstration purposes only.
 
-MIT License
+---
+
+# 🎯 Learning Outcomes
+
+This project helped strengthen practical skills in:
+- machine learning workflows
+- data preprocessing
+- FastAPI integration
+- classification modeling
+- frontend-backend integration
+- collaborative project development
+
+---
+
+# 👤 Author
+
+Ajit Mahapatro  
+B.Sc. Data Science – Aditya Degree College
